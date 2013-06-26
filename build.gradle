@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+
+repositories {
+	mavenCentral()
+	mavenRepo url: "http://repo.fusesource.com/nexus/content/groups/public"
+	mavenRepo url: "http://repository.springsource.com/maven/bundles/release"
+	mavenRepo url: "http://repository.springsource.com/maven/bundles/external"
+}
+
+dependencies {
+	compile fileTree(dir: 'lib', includes: ['*.jar'])
+	compile 'log4j:log4j:1.2.16'
+	compile 'org.slf4j:slf4j-api:1.6.1'
+	compile 'org.slf4j:slf4j-log4j12:1.6.1'
+	compile 'junit:junit:4.10'
+	compile 'jstl:jstl:1.2'
+	compile 'taglibs:standard:1.1.2'
+	compile 'net.sf.json-lib:json-lib:2.1:jdk15'
+	compile 'cglib:cglib-nodep:2.1_3'
+	compile 'com.fasterxml:classmate:0.5.4'
+	compile 'org.apache.commons:commons-io:1.3.2'
+	compile 'commons-fileupload:commons-fileupload:1.2.1'
+	compile 'commons-codec:commons-codec:1.3'
+	compile 'org.aspectj:aspectjweaver:1.7.0'
+	compile 'org.aspectj:aspectjrt:1.7.0'
+	compile 'mysql:mysql-connector-java:5.1.22'
+	compile 'org.springframework:spring-core:3.1.1.RELEASE'
+	compile 'org.springframework:spring-beans:3.1.1.RELEASE'
+	compile 'org.springframework:spring-orm:3.1.1.RELEASE'
+	compile 'org.springframework:spring-webmvc:3.1.1.RELEASE'
+	compile 'org.springframework:spring-test:3.1.1.RELEASE'
+	compile 'org.springframework:spring-aspects:3.1.1.RELEASE'
+	compile 'org.hibernate:hibernate-core:4.2.0.Final'
+	compile 'org.hibernate:hibernate-validator:4.2.0.Final'
+	compile 'org.hibernate:hibernate-validator-annotation-processor:4.2.0.Final'
+	compile 'org.hibernate:hibernate-ehcache:4.2.0.Final'
+	compile 'com.opensymphony.quartz:com.springsource.org.quartz:1.6.2'
+	compile 'org.codehaus.jackson:com.springsource.org.codehaus.jackson:1.4.2'
+	compile 'org.codehaus.jackson:com.springsource.org.codehaus.jackson.mapper:1.4.2'
+	compile 'org.hamcrest:hamcrest-all:1.3'
+}
+
+task listjars << {
+    configurations.compile.each { File file -> println file.name }
+}
